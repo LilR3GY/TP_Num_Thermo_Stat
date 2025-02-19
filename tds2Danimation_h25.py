@@ -193,3 +193,11 @@ while running:
         p[j] = pcomj+mass*Vcom
         apos[i] = posi+(p[i]/mass)*deltat # move forward deltat in time, ramenant au même temps où sont rendues les autres sphères dans l'itération
         apos[j] = posj+(p[j]/mass)*deltat
+        
+def trajectoire_particule(i):
+    # Génère une trajectoire de la particule i
+    trajectory = []
+    for _ in range(1000):  # 1000 points de la trajectoire
+        trajectory.append(apos[i])
+        rate(100)  # limite la vitesse de calcul pour que la trajectoire soit visible à l'oeil humain!
+    return trajectory
