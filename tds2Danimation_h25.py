@@ -11,6 +11,7 @@
 
 from vpython import *
 import os
+import time
 import json
 import numpy as np
 import math
@@ -123,7 +124,18 @@ animation.bind('keydown', stop_simulation)  # Détecte `Esc`
 
 running = True
 
+start_time = time.time()
+
 while running:
+
+    current_time = time.time()  # Heure actuelle
+    elapsed_time = current_time - start_time  # Temps écoulé
+
+    if elapsed_time >= 15:  # Arrêter après 15 secondes
+        running = False
+        print("Simulation arrêtée après 15 secondes.")
+        break  # Fin de la simulation
+
     rate(300)  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
 
     frame_counter = 0

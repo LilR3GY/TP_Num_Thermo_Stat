@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cfcef761-0bfa-401b-a49c-b977125b2a8d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/p_data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tds2Danimation_h25.py" beforeDir="false" afterPath="$PROJECT_DIR$/tds2Danimation_h25.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdsTP_Part1_h25.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/tdsTP_Part1_h25.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +70,7 @@
       <workItem from="1739849177151" duration="524000" />
       <workItem from="1739849716364" duration="1154000" />
       <workItem from="1739922455759" duration="790000" />
-      <workItem from="1739923262731" duration="4075000" />
+      <workItem from="1739923262731" duration="4989000" />
     </task>
     <servers />
   </component>
@@ -78,6 +78,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TP_Num_Thermo_Stat$tds2Danimation_h25.coverage" NAME="tds2Danimation_h25 Coverage Results" MODIFIED="1739927549918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TP_Num_Thermo_Stat$tds2Danimation_h25.coverage" NAME="tds2Danimation_h25 Coverage Results" MODIFIED="1739928465731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
