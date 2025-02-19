@@ -10,9 +10,34 @@
 """
 
 from vpython import *
+import os
+import json
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+
+
+
+def save_quantite_mouvement():
+    """
+    Sauvegarde la quantité de mouvement actuelle (liste `p`) dans un fichier JSON
+    dans le même répertoire que ce fichier script.
+    """
+    # Obtenir le répertoire du script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(script_dir, "p_data.json")  # Chemin complet du fichier
+
+    # Convertir les vecteurs VPython en dictionnaires compréhensibles
+    p_dict = [{"x": vect.x, "y": vect.y, "z": vect.z} for vect in p]
+
+    # Sauvegarder au format JSON
+    try:
+        with open(filepath, 'w') as f:
+            json.dump(p_dict, f, indent=4)  # Sauvegarde
+        print(f"Données sauvegardées dans le fichier {filepath}")
+    except Exception as e:
+        print(f"Erreur lors de la sauvegarde : {e}")
+
 
 # win = 500 # peut aider à définir la taille d'un autre objet visuel comme un histogramme proportionnellement à la taille du canevas.
 
@@ -92,7 +117,7 @@ def stop_simulation(evt):
 def disable_default_text_input(evt):
     pass  # Ne fait rien, empêche l'entrée de texte par défaut
 
-# Liaison des touches pour empêcher les inputsS
+# Liaison des touches pour empêcher les inputs
 animation.bind('keydown', disable_default_text_input)  # Empêche l'affichage de caractères
 animation.bind('keydown', stop_simulation)  # Détecte `Esc`
 
@@ -101,13 +126,20 @@ running = True
 while running:
     rate(300)  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
 
+    frame_counter = 0
+
+    if frame_counter % 1000 == 0:  # Enregistre toutes les 1000 itérations
+        save_quantite_mouvement()
+
+    frame_counter += 1
+
     #### DÉPLACE TOUTES LES SPHÈRES D'UN PAS SPATIAL deltax
     vitesse = []   # vitesse instantanée de chaque sphère
     deltax = []  # pas de position de chaque sphère correspondant à l'incrément de temps dt
     for i in range(Natoms):
         vitesse.append(p[i]/mass)   # par définition de la quantité de nouvement pour chaque sphère
         deltax.append(vitesse[i] * dt)   # différence avant pour calculer l'incrément de position
-        Atoms[i].pos = apos[i] = apos[i] + deltax[i] # nouvelle position de l'atome après l'incrément de temps dt
+        Atoms[i].pos = apos[i] = apos[i] + deltax[i]  # nouvelle position de l'atome après l'incrément de temps dt
 
     #### CONSERVE LA QUANTITÉ DE MOUVEMENT AUX COLLISIONS AVEC LES MURS DE LA BOÎTE ####
     for i in range(Natoms):
