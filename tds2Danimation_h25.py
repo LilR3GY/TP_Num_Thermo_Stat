@@ -29,7 +29,7 @@ def save_quantite_mouvement():
     filepath = os.path.join(script_dir, "p_data.json")  # Chemin complet du fichier
 
     # Convertir les vecteurs VPython en dictionnaires compréhensibles
-    p_dict = [{"x": vect.x, "y": vect.y, "z": vect.z} for vect in p]
+    p_dict = [{"x": vect.x, "y": vect.y} for vect in p]
 
     # Sauvegarder au format JSON
     try:
