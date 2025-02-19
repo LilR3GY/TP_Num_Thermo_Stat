@@ -14,6 +14,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 import json
+import os
 
 def save_quantite_mouvement():
     """
