@@ -83,7 +83,22 @@ def checkCollisions():
 ## ATTENTION : la boucle laisse aller l'animation aussi longtemps que souhaité, assurez-vous de savoir comment interrompre vous-même correctement (souvent `ctrl+c`, mais peut varier)
 ## ALTERNATIVE : vous pouvez bien sûr remplacer la boucle "while" par une boucle "for" avec un nombre d'itérations suffisant pour obtenir une bonne distribution statistique à l'équilibre
 
-while True:
+def stop_simulation(evt):
+    global running
+    if evt.key == 'esc':  # Vérifie si la touche est 'Esc'
+        running = False  # Arrête la simulation
+
+# Désactive la saisie de texte dans la fenêtre d'animation
+def disable_default_text_input(evt):
+    pass  # Ne fait rien, empêche l'entrée de texte par défaut
+
+# Liaison des touches pour empêcher les inputs
+animation.bind('keydown', disable_default_text_input)  # Empêche l'affichage de caractères
+animation.bind('keydown', stop_simulation)  # Détecte `Esc`
+
+running = True
+
+while running:
     rate(300)  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
 
     #### DÉPLACE TOUTES LES SPHÈRES D'UN PAS SPATIAL deltax
@@ -146,3 +161,6 @@ while True:
         p[j] = pcomj+mass*Vcom
         apos[i] = posi+(p[i]/mass)*deltat # move forward deltat in time, ramenant au même temps où sont rendues les autres sphères dans l'itération
         apos[j] = posj+(p[j]/mass)*deltat
+
+
+print("Simulation arrêtée.")
