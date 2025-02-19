@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import json
 import os
 
-def save_quantite_mouvement():
+def save_quantite_mouvement(p):
     """
     Sauvegarde la quantité de mouvement actuelle (liste `p`) dans un fichier JSON
     dans le même répertoire que ce fichier script.
