@@ -92,7 +92,7 @@ def stop_simulation(evt):
 def disable_default_text_input(evt):
     pass  # Ne fait rien, empêche l'entrée de texte par défaut
 
-# Liaison des touches pour empêcher les inputs
+# Liaison des touches pour empêcher les inputsS
 animation.bind('keydown', disable_default_text_input)  # Empêche l'affichage de caractères
 animation.bind('keydown', stop_simulation)  # Détecte `Esc`
 
@@ -107,7 +107,7 @@ while running:
     for i in range(Natoms):
         vitesse.append(p[i]/mass)   # par définition de la quantité de nouvement pour chaque sphère
         deltax.append(vitesse[i] * dt)   # différence avant pour calculer l'incrément de position
-        Atoms[i].pos = apos[i] = apos[i] + deltax[i]  # nouvelle position de l'atome après l'incrément de temps dt
+        Atoms[i].pos = apos[i] = apos[i] + deltax[i] # nouvelle position de l'atome après l'incrément de temps dt
 
     #### CONSERVE LA QUANTITÉ DE MOUVEMENT AUX COLLISIONS AVEC LES MURS DE LA BOÎTE ####
     for i in range(Natoms):
