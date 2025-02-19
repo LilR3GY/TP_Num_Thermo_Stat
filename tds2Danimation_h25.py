@@ -13,6 +13,27 @@ from vpython import *
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+import json
+
+def save_quantite_mouvement():
+    """
+    Sauvegarde la quantité de mouvement actuelle (liste `p`) dans un fichier JSON
+    dans le même répertoire que ce fichier script.
+    """
+    # Obtenir le répertoire du script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(script_dir, "p_data.json")  # Chemin complet du fichier
+
+    # Convertir les vecteurs VPython en dictionnaires compréhensibles
+    p_dict = [{"x": vect.x, "y": vect.y} for vect in p]
+
+    # Sauvegarder au format JSON
+    try:
+        with open(filepath, 'w') as f:
+            json.dump(p_dict, f, indent=4)  # Sauvegarde
+        print(f"Données sauvegardées dans le fichier {filepath}")
+    except Exception as e:
+        print(f"Erreur lors de la sauvegarde : {e}")
 
 # win = 500 # peut aider à définir la taille d'un autre objet visuel comme un histogramme proportionnellement à la taille du canevas.
 
@@ -56,9 +77,7 @@ cadre.append(
 Atoms = []  # Objet qui contiendra les sphères pour l'animation
 p = []  # quantité de mouvement des sphères
 apos = []  # position des sphères
-pavg = sqrt(
-    2 * mass * (DIM / 2) * k * T
-)  # average kinetic energy in 3D p**2/(2mass) = (3/2)kT : Principe de l'équipartition de l'énergie en thermodynamique statistique classique
+pavg = sqrt(2 * mass * (DIM / 2) * k * T)  # average kinetic energy in 3D p**2/(2mass) = (3/2)kT : Principe de l'équipartition de l'énergie en thermodynamique statistique classique
 
 for i in range(Natoms):
     x = (
