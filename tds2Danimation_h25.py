@@ -98,7 +98,7 @@ animation.bind('keydown', stop_simulation)  # Détecte `Esc`
 
 running = True
 
-while True:
+while running:
     rate(300)  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
 
     #### DÉPLACE TOUTES LES SPHÈRES D'UN PAS SPATIAL deltax
