@@ -18,7 +18,7 @@ import math
 import matplotlib.pyplot as plt
 
 
-
+#------------------------------------------------------------------FONCTION_AJOUTER----------------------------------------------------------------------------------------------------
 def save_quantite_mouvement():
     """
     Sauvegarde la quantité de mouvement actuelle (liste `p`) dans un fichier JSON
@@ -38,6 +38,9 @@ def save_quantite_mouvement():
         print(f"Données sauvegardées dans le fichier {filepath}")
     except Exception as e:
         print(f"Erreur lors de la sauvegarde : {e}")
+
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER-----------------------------------------------------------------------------------------------
+
 
 
 # win = 500 # peut aider à définir la taille d'un autre objet visuel comme un histogramme proportionnellement à la taille du canevas.
@@ -109,6 +112,8 @@ def checkCollisions():
 ## ATTENTION : la boucle laisse aller l'animation aussi longtemps que souhaité, assurez-vous de savoir comment interrompre vous-même correctement (souvent `ctrl+c`, mais peut varier)
 ## ALTERNATIVE : vous pouvez bien sûr remplacer la boucle "while" par une boucle "for" avec un nombre d'itérations suffisant pour obtenir une bonne distribution statistique à l'équilibre
 
+#------------------------------------------------------------------FONCTION_AJOUTER---------------------------------------------------------------------------------------------------
+
 def stop_simulation(evt):
     global running
     if evt.key == 'esc':  # Vérifie si la touche est 'Esc'
@@ -126,7 +131,11 @@ running = True
 
 start_time = time.time()
 
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER-----------------------------------------------------------------------------------------------
+
 while running:
+
+# ------------------------------------------------------------------FONCTION_AJOUTER--------------------------------------------------------------------------------------------------
 
     current_time = time.time()  # Heure actuelle
     elapsed_time = current_time - start_time  # Temps écoulé
@@ -144,6 +153,8 @@ while running:
         save_quantite_mouvement()
 
     frame_counter += 1
+
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER-----------------------------------------------------------------------------------------------
 
     #### DÉPLACE TOUTES LES SPHÈRES D'UN PAS SPATIAL deltax
     vitesse = []   # vitesse instantanée de chaque sphère
