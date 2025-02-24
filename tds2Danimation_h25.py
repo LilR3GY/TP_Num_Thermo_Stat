@@ -59,6 +59,26 @@ def save_distance_temps_collision():
 
 #------------------------------------------------------------------FIN_FONCTION_AJOUTER---------------------------------
 
+#------------------------------------------------------------------FONCTION_AJOUTER-------------------------------------
+# Fonction permettant enregistrer les distance (x et y) et le temps entre chaque collision.
+
+def save_distance_x_y_temps_collision():
+    # Obtenir le répertoire du script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(script_dir, "distance_x_y_temps_collision_data.json")  # Chemin complet du fichier
+
+    distance_x_y_temps_dict = [{"distance_x": d_x, "distance_y": d_y, "temps": t} for d_x, d_y, t in zip(distance_collision_x, distance_collision_y, temps_collision)]
+
+    # Sauvegarder au format JSON
+    try:
+        with open(filepath, 'w') as f:
+            json.dump(distance_x_y_temps_dict, f, indent=4)  # Sauvegarde
+        print(f"Données sauvegardées dans le fichier {filepath}")
+    except Exception as e:
+        print(f"Erreur lors de la sauvegarde : {e}")
+
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER---------------------------------
+
 #-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
 # Choix de la particule suivit entre chaque collision.
 
@@ -153,7 +173,10 @@ nombre_steps = 1000
 frame_counter = 0
 
 distance_collision = []
+distance_collision_x = []
+distance_collision_y = []
 temps_collision = []
+temps_collision_x_y = []
 
 #-----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
 
@@ -186,7 +209,44 @@ def suivre_particule(id, hitlist, vitesse, step, dt):
     return distance_collision_particule, temps_collision_particule
 
 
-# -----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
+# -----------------------------------------------FIN_FONCTION_AJOUTER---------------------------------------------------
+
+#-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
+# Permet de donner les deplacements x et y. Utile a la question 6 de la partie 1.
+
+def suivre_particule_x_y(id, hitlist, vitesse, step, dt):
+    # Initialisation
+    position_particule = []
+    distance_collision_particule_x = []
+    distance_collision_particule_y = []
+    temps_collision_particule = []
+    current_time = step * dt  # Calcule le temps accumulé jusqu'à l'étape
+
+    # Ajoute la position actuelle de la particule suivie
+    position_particule.append(apos[id])  # Enregistre la position actuelle de la particule suivie
+
+    # Vérifie si la particule suivie est impliquée dans une collision
+    if hitlist:  # S'il y a des collisions détectées
+        for paire in hitlist:  # Parcourt les collisions
+            i, j = paire  # Indices des particules en collision
+
+            if i == id or j == id:  # Si la particule suivie est impliquée dans une collision
+                distance_parcourue = vitesse[id].mag * current_time  # Calcule la distance parcourue totale
+
+                # Décompose en distance x et distance y
+                distance_x = distance_parcourue * (vitesse[id].x / vitesse[id].mag)
+                distance_y = distance_parcourue * (vitesse[id].y / vitesse[id].mag)
+
+                distance_collision_particule_x.append(distance_x)  # Stocke la distance x
+                distance_collision_particule_y.append(distance_y)  # Stocke la distance y
+                temps_collision_particule.append(current_time)  # Stocke le temps écoulé
+
+                current_time = 0  # Réinitialise le temps pour cet intervalle
+
+    return distance_collision_particule_x, distance_collision_particule_y, temps_collision_particule
+
+#---------------------------------------------------FIN_FONCTION_AJOUTER------------------------------------------------
+
 
 #-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
 # Remplacement de la While par une boucle for qui prend en compte un nombre de Steps.
@@ -235,7 +295,19 @@ for step in range(nombre_steps):
     distance_collision.extend(distance_collision_particule)
     temps_collision.extend(temps_collision_particule)
 
+    # Enregistre les donnees de distance.
     save_distance_temps_collision()
+
+    # Permet de détecter les collisions et de créer des listes avec la distance (x et y) parcourue et le temps entre les collision.
+    distance_x, distance_y, temps_collision_x_y= suivre_particule_x_y(id_particule, hitlist, vitesse, step, dt)
+
+    # Ajouter les donnees collectees
+    distance_collision_x.extend(distance_x)
+    distance_collision_y.extend(distance_y)
+    temps_collision_x_y.extend(temps_collision_x_y)
+
+    save_distance_x_y_temps_collision()
+
 
 # -----------------------------------------------FIN_FONCTION_AJOUTER---------------------------------------------------
 
