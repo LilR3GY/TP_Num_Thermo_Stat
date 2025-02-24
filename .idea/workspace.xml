@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cfcef761-0bfa-401b-a49c-b977125b2a8d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p_data.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tds2Danimation_h25.py" beforeDir="false" afterPath="$PROJECT_DIR$/tds2Danimation_h25.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdsTP_Part1_h25.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/tdsTP_Part1_h25.ipynb" afterDir="false" />
     </list>
@@ -80,6 +79,7 @@
       <workItem from="1740281536501" duration="1234000" />
       <workItem from="1740360524342" duration="2867000" />
       <workItem from="1740363555914" duration="1641000" />
+      <workItem from="1740408293042" duration="4065000" />
     </task>
     <servers />
   </component>
@@ -98,6 +98,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TP_Num_Thermo_Stat$tds2Danimation_h25.coverage" NAME="tds2Danimation_h25 Coverage Results" MODIFIED="1740364481360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TP_Num_Thermo_Stat$tds2Danimation_h25.coverage" NAME="tds2Danimation_h25 Coverage Results" MODIFIED="1740411889422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

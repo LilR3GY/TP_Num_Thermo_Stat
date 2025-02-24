@@ -41,6 +41,12 @@ def save_quantite_mouvement():
 
 #------------------------------------------------------------------FIN_FONCTION_AJOUTER-----------------------------------------------------------------------------------------------
 
+#-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
+# Choix de la particule suivit entre chaque collision.
+
+id_particule = 1
+
+#-----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
 
 
 # win = 500 # peut aider à définir la taille d'un autre objet visuel comme un histogramme proportionnellement à la taille du canevas.
@@ -84,7 +90,16 @@ for i in range(Natoms):
     y = L*random()-L/2
     z = 0
     if i == 0:  # garde une sphère plus grosse et colorée parmis toutes les grises
-        Atoms.append(simple_sphere(pos=vector(x,y,z), radius=0.03, color=color.magenta)) #, make_trail=True, retain=100, trail_radius=0.3*Ratom))
+        Atoms.append(simple_sphere(pos=vector(x,y,z), radius=0.03, color=color.magenta)) #, make_trail=True, retain=100, trail_radius=0.3*Ratom))\
+
+# -------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
+# Met en rouge la particule suivit.
+
+    if i == id_particule:
+        Atoms.append(simple_sphere(pos=vector(x,y,z), radius=Ratom, color=color.red))
+
+# -----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
+
     else: Atoms.append(simple_sphere(pos=vector(x,y,z), radius=Ratom, color=gray))
     apos.append(vec(x,y,z)) # liste de la position initiale de toutes les sphères
 #    theta = pi*random() # direction de coordonnées sphériques, superflue en 2D
@@ -108,14 +123,25 @@ def checkCollisions():
                 hitlist.append([i,j]) # liste numérotant toutes les paires de sphères en collision
     return hitlist
 
+
 #### BOUCLE PRINCIPALE POUR L'ÉVOLUTION TEMPORELLE DE PAS dt ####
 ## ATTENTION : la boucle laisse aller l'animation aussi longtemps que souhaité, assurez-vous de savoir comment interrompre vous-même correctement (souvent `ctrl+c`, mais peut varier)
 ## ALTERNATIVE : vous pouvez bien sûr remplacer la boucle "while" par une boucle "for" avec un nombre d'itérations suffisant pour obtenir une bonne distribution statistique à l'équilibre
 
 #-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
 
-frame_counter = 0
+#-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
+# Régit le nombre de steps, initialise les listes des distances entre chaque collision et le temps entre chaque collision.
+
 nombre_steps = 1000
+
+position_particule = []
+distance_collision_particule = []
+temps_collision_particule = []
+
+frame_counter = 0
+#-----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
+# Remplacement de la While par une boucle for qui prend en compte un nombre de Steps.
 
 for step in range(nombre_steps):
     current_time = step * dt  # Update current time based on the step
@@ -138,6 +164,14 @@ for step in range(nombre_steps):
         deltax.append(vitesse[i] * dt)   # différence avant pour calculer l'incrément de position
         Atoms[i].pos = apos[i] = apos[i] + deltax[i]  # nouvelle position de l'atome après l'incrément de temps dt
 
+# -------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
+# Prend en compte la position de la particule suivit.
+
+        if i == id_particule:
+            position_particule.append(apos[i])
+
+# -----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
+
     #### CONSERVE LA QUANTITÉ DE MOUVEMENT AUX COLLISIONS AVEC LES MURS DE LA BOÎTE ####
     for i in range(Natoms):
         loc = apos[i]
@@ -148,8 +182,24 @@ for step in range(nombre_steps):
             if loc.y < 0: p[i].y = abs(p[i].y)  # renverse composante y au mur du bas
             else: p[i].y =  -abs(p[i].y)  # renverse composante y au mur du haut
 
+
     #### LET'S FIND THESE COLLISIONS!!! ####
     hitlist = checkCollisions()
+
+# -------------------------------------------------FONCTION_AJOUTER-----------------------------------------------------
+# Permet de détecter les collisions et de créer des listes avec la distance parcourue et le temps entre les collision.
+
+    if hitlist:
+        for paire in hitlist:
+            i, j = paire
+
+            if i == id_particule or j == id_particule:
+                distance_parcourue = vitesse[id_particule].mag * current_time
+                distance_collision_particule.append(distance_parcourue)
+                temps_collision_particule.append(current_time)
+
+                current_time = 0
+# -----------------------------------------------FIN_FONCTION_AJOUTER---------------------------------------------------
 
     #### CONSERVE LA QUANTITÉ DE MOUVEMENT AUX COLLISIONS ENTRE SPHÈRES ####
     for ij in hitlist:
@@ -191,4 +241,4 @@ for step in range(nombre_steps):
         apos[i] = posi+(p[i]/mass)*deltat # move forward deltat in time, ramenant au même temps où sont rendues les autres sphères dans l'itération
         apos[j] = posj+(p[j]/mass)*deltat
 
-        Atome_choisie = atoms
+
