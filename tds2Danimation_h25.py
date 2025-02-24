@@ -18,12 +18,10 @@ import math
 import matplotlib.pyplot as plt
 
 
-#------------------------------------------------------------------FONCTION_AJOUTER----------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------FONCTION_AJOUTER-------------------------------------
+# Fonction permettant enregistrer les qdm.
+
 def save_quantite_mouvement():
-    """
-    Sauvegarde la quantité de mouvement actuelle (liste `p`) dans un fichier JSON
-    dans le même répertoire que ce fichier script.
-    """
     # Obtenir le répertoire du script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     filepath = os.path.join(script_dir, "p_data.json")  # Chemin complet du fichier
@@ -39,7 +37,27 @@ def save_quantite_mouvement():
     except Exception as e:
         print(f"Erreur lors de la sauvegarde : {e}")
 
-#------------------------------------------------------------------FIN_FONCTION_AJOUTER-----------------------------------------------------------------------------------------------
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER---------------------------------
+
+#------------------------------------------------------------------FONCTION_AJOUTER-------------------------------------
+# Fonction permettant enregistrer les distance et le temps entre chaque collision.
+
+def save_distance_temps_collision():
+    # Obtenir le répertoire du script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(script_dir, "distance_temps_collision_data.json")  # Chemin complet du fichier
+
+    distance_temps_dict = [{"distance": d, "temps": t} for d, t in zip(distance_collision, temps_collision)]
+
+    # Sauvegarder au format JSON
+    try:
+        with open(filepath, 'w') as f:
+            json.dump(distance_temps_dict, f, indent=4)  # Sauvegarde
+        print(f"Données sauvegardées dans le fichier {filepath}")
+    except Exception as e:
+        print(f"Erreur lors de la sauvegarde : {e}")
+
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER---------------------------------
 
 #-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
 # Choix de la particule suivit entre chaque collision.
@@ -128,19 +146,49 @@ def checkCollisions():
 ## ATTENTION : la boucle laisse aller l'animation aussi longtemps que souhaité, assurez-vous de savoir comment interrompre vous-même correctement (souvent `ctrl+c`, mais peut varier)
 ## ALTERNATIVE : vous pouvez bien sûr remplacer la boucle "while" par une boucle "for" avec un nombre d'itérations suffisant pour obtenir une bonne distribution statistique à l'équilibre
 
-#-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
-
 #-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
-# Régit le nombre de steps, initialise les listes des distances entre chaque collision et le temps entre chaque collision.
+# Régit le nombre de steps. Init les liste de distance et de temps de collision pour la particule suivit.
 
 nombre_steps = 1000
-
-position_particule = []
-distance_collision_particule = []
-temps_collision_particule = []
-
 frame_counter = 0
+
+distance_collision = []
+temps_collision = []
+
 #-----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
+
+# -------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
+# Fonction permettant de suivre une particule. Determiner la distance et le temps entre chaque collision.
+
+def suivre_particule(id, hitlist, vitesse, step, dt):
+
+    # Initialisation
+    position_particule = []
+    distance_collision_particule = []
+    temps_collision_particule = []
+    current_time = step * dt  # Calcule le temps accumulé jusqu'à l'étape
+
+    # Ajoute la position actuelle de la particule suivie
+    position_particule.append(apos[id])  # Enregistre la position actuelle de la particule suivie
+
+    # Vérifie si la particule suivie est impliquée dans une collision
+    if hitlist:  # S'il y a des collisions détectées
+        for paire in hitlist:  # Parcourt les collisions
+            i, j = paire  # Indices des particules en collision
+
+            if i == id or j == id:  # Si la particule suivie est impliquée dans une collision
+                distance_parcourue = vitesse[id].mag * current_time  # Calcule la distance parcourue
+                distance_collision_particule.append(distance_parcourue)  # Stocke la distance parcourue
+                temps_collision_particule.append(current_time)  # Stocke le temps écoulé
+
+                current_time = 0  # Réinitialise le temps pour cet intervalle
+
+    return distance_collision_particule, temps_collision_particule
+
+
+# -----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
+
+#-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
 # Remplacement de la While par une boucle for qui prend en compte un nombre de Steps.
 
 for step in range(nombre_steps):
@@ -164,14 +212,6 @@ for step in range(nombre_steps):
         deltax.append(vitesse[i] * dt)   # différence avant pour calculer l'incrément de position
         Atoms[i].pos = apos[i] = apos[i] + deltax[i]  # nouvelle position de l'atome après l'incrément de temps dt
 
-# -------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
-# Prend en compte la position de la particule suivit.
-
-        if i == id_particule:
-            position_particule.append(apos[i])
-
-# -----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
-
     #### CONSERVE LA QUANTITÉ DE MOUVEMENT AUX COLLISIONS AVEC LES MURS DE LA BOÎTE ####
     for i in range(Natoms):
         loc = apos[i]
@@ -187,18 +227,16 @@ for step in range(nombre_steps):
     hitlist = checkCollisions()
 
 # -------------------------------------------------FONCTION_AJOUTER-----------------------------------------------------
-# Permet de détecter les collisions et de créer des listes avec la distance parcourue et le temps entre les collision.
+    # Permet de détecter les collisions et de créer des listes avec la distance parcourue et le temps entre les collision.
 
-    if hitlist:
-        for paire in hitlist:
-            i, j = paire
+    distance_collision_particule, temps_collision_particule = suivre_particule(id_particule, hitlist, vitesse, step, dt)
 
-            if i == id_particule or j == id_particule:
-                distance_parcourue = vitesse[id_particule].mag * current_time
-                distance_collision_particule.append(distance_parcourue)
-                temps_collision_particule.append(current_time)
+    # Ajouter les données collectées
+    distance_collision.extend(distance_collision_particule)
+    temps_collision.extend(temps_collision_particule)
 
-                current_time = 0
+    save_distance_temps_collision()
+
 # -----------------------------------------------FIN_FONCTION_AJOUTER---------------------------------------------------
 
     #### CONSERVE LA QUANTITÉ DE MOUVEMENT AUX COLLISIONS ENTRE SPHÈRES ####
