@@ -112,49 +112,23 @@ def checkCollisions():
 ## ATTENTION : la boucle laisse aller l'animation aussi longtemps que souhaité, assurez-vous de savoir comment interrompre vous-même correctement (souvent `ctrl+c`, mais peut varier)
 ## ALTERNATIVE : vous pouvez bien sûr remplacer la boucle "while" par une boucle "for" avec un nombre d'itérations suffisant pour obtenir une bonne distribution statistique à l'équilibre
 
-#------------------------------------------------------------------FONCTION_AJOUTER---------------------------------------------------------------------------------------------------
+#-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
 
-def stop_simulation(evt):
-    global running
-    if evt.key == 'esc':  # Vérifie si la touche est 'Esc'
-        running = False  # Arrête la simulation
+frame_counter = 0
+nombre_steps = 1000
 
-# Désactive la saisie de texte dans la fenêtre d'animation
-def disable_default_text_input(evt):
-    pass  # Ne fait rien, empêche l'entrée de texte par défaut
+for step in range(nombre_steps):
+    current_time = step * dt  # Update current time based on the step
 
-# Liaison des touches pour empêcher les inputs
-animation.bind('keydown', disable_default_text_input)  # Empêche l'affichage de caractères
-animation.bind('keydown', stop_simulation)  # Détecte `Esc`
+    rate(300)  # Control the simulation speed
 
-running = True
-
-start_time = time.time()
-
-#------------------------------------------------------------------FIN_FONCTION_AJOUTER-----------------------------------------------------------------------------------------------
-
-while running:
-
-# ------------------------------------------------------------------FONCTION_AJOUTER--------------------------------------------------------------------------------------------------
-
-    current_time = time.time()  # Heure actuelle
-    elapsed_time = current_time - start_time  # Temps écoulé
-
-    if elapsed_time >= 15:  # Arrêter après 15 secondes
-        running = False
-        print("Simulation arrêtée après 15 secondes.")
-        break  # Fin de la simulation
-
-    rate(300)  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
-
-    frame_counter = 0
-
-    if frame_counter % 1000 == 0:  # Enregistre toutes les 1000 itérations
+        # Save quantities every 1000 iterations
+    if frame_counter % 1000 == 0:
         save_quantite_mouvement()
 
     frame_counter += 1
 
-#------------------------------------------------------------------FIN_FONCTION_AJOUTER-----------------------------------------------------------------------------------------------
+#---------------------------------------------------FIN_FONCTION_AJOUTER------------------------------------------------
 
     #### DÉPLACE TOUTES LES SPHÈRES D'UN PAS SPATIAL deltax
     vitesse = []   # vitesse instantanée de chaque sphère
@@ -216,3 +190,5 @@ while running:
         p[j] = pcomj+mass*Vcom
         apos[i] = posi+(p[i]/mass)*deltat # move forward deltat in time, ramenant au même temps où sont rendues les autres sphères dans l'itération
         apos[j] = posj+(p[j]/mass)*deltat
+
+        Atome_choisie = atoms
