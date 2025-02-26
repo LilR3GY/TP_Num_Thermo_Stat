@@ -169,7 +169,7 @@ def checkCollisions():
 #-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
 # Régit le nombre de steps. Init les liste de distance et de temps de collision pour la particule suivit.
 
-nombre_steps = 2000
+nombre_steps = 5000
 frame_counter = 0
 
 distance_collision = []
