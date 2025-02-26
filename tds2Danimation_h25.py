@@ -90,7 +90,7 @@ id_particule = 1
 # win = 500 # peut aider à définir la taille d'un autre objet visuel comme un histogramme proportionnellement à la taille du canevas.
 
 # Déclaration de variables influençant le temps d'exécution de la simulation
-Natoms = 200  # change this to have more or fewer atoms
+Natoms = 2000  # change this to have more or fewer atoms
 dt = 1E-5  # pas d'incrémentation temporel
 
 # Déclaration de variables physiques "Typical values"
