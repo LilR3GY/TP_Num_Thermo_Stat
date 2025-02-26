@@ -39,7 +39,7 @@ def save_quantite_mouvement():
 # win = 500 # peut aider à définir la taille d'un autre objet visuel comme un histogramme proportionnellement à la taille du canevas.
 
 # Déclaration de variables influençant le temps d'exécution de la simulation
-Natoms = 200  # change this to have more or fewer atoms
+Natoms = 2  # change this to have more or fewer atoms
 dt = 1e-5  # pas d'incrémentation temporel
 
 # Déclaration de variables physiques "Typical values"
@@ -98,33 +98,136 @@ for i in range(Natoms):
     px = pavg * cos(phi)  # qte de mvt initiale selon l'équipartition
     py = pavg * sin(phi)
     pz = 0
-    p.append(
-        vector(px, py, pz)
-    )  # liste de la quantité de mouvement initiale de toutes les sphères
+    p.append(vector(px, py, pz))  # liste de la quantité de mouvement initiale de toutes les sphères
 
 
 #### FONCTION POUR IDENTIFIER LES COLLISIONS, I.E. LORSQUE LA DISTANCE ENTRE LES CENTRES DE 2 SPHÈRES EST À LA LIMITE DE S'INTERPÉNÉTRER ####
 def checkCollisions():
     hitlist = []  # initialisation
-    r2 = (
-        2 * Ratom
-    )  # distance critique où les 2 sphères entre en contact à la limite de leur rayon
+    r2 = (2 * Ratom)  # distance critique où les 2 sphères entre en contact à la limite de leur rayon
     r2 *= r2  # produit scalaire pour éviter une comparaison vectorielle ci-dessous
     for i in range(Natoms):
         ai = apos[i]
         for j in range(i):
             aj = apos[j]
-            dr = (
-                ai - aj
-            )  # la boucle dans une boucle itère pour calculer cette distance vectorielle dr entre chaque paire de sphère
-            if (
-                mag2(dr) < r2
-            ):  # test de collision où mag2(dr) qui retourne la norme élevée au carré de la distance intersphère dr
-                hitlist.append(
-                    [i, j]
-                )  # liste numérotant toutes les paires de sphères en collision
-    return hitlist
+            dr = (ai - aj)  # la boucle dans une boucle itère pour calculer cette distance vectorielle dr entre chaque paire de sphère
+            if (mag2(dr) < r2):  # test de collision où mag2(dr) qui retourne la norme élevée au carré de la distance intersphère dr
+                hitlist.append([i, j])  # liste numérotant toutes les paires de sphères en collision
+    return hitlist  # retourne la liste des paires de sphères en collision
 
+def follow_the_bouncing_ball():
+    """
+    Fonction pour suivre la trajectoire d'une sphère particulière dans l'animation
+    et calculer le temps et la distance entre chaque collision, en ignorant les
+    collisions avec les murs.
+    """
+    # Crée une sphère à suivre
+    sphere_to_follow = simple_sphere(pos=vector(0, 0, 0), radius=0.03, color=color.cyan)
+    print(1)
+    # Initialisation des variables pour le calcul du temps et de la distance entre les collisions
+    previous_collision_time = 0
+    collision_times = []
+    collision_distances = []
+
+    simulation_time = 0
+    max_simulation_time = 1  # Suivre la sphère pendant les 10 premières secondes
+
+    while running and simulation_time < max_simulation_time:
+        rate(300)  # Limite la vitesse de calcul de la simulation
+
+        # Met à jour la position de la sphère à suivre
+        sphere_to_follow.pos = Atoms[0].pos
+
+        # Vérifie les collisions
+        hitlist = checkCollisions()
+        print(2)
+        # Calcule le temps et la distance entre les collisions pour la sphère à suivre
+        for ij in hitlist:
+            if 0 in ij:  # Si la sphère à suivre est impliquée dans une collision
+                current_time = simulation_time
+                collision_time = current_time - previous_collision_time
+                previous_collision_time = current_time
+
+                # Calcule la distance parcourue par la sphère à suivre
+                i, j = ij
+                posi = apos[i]
+                posj = apos[j]
+                distance = mag(posi - posj)
+
+                # Ajoute les données de collision aux listes
+                collision_times.append(collision_time)
+                collision_distances.append(distance)
+
+        # Mise à jour de la position des sphères
+        for i in range(Natoms):
+            vitesse = p[i] / mass
+            deltax = vitesse * dt
+            Atoms[i].pos = apos[i] = apos[i] + deltax
+        print(3)
+        # Mise à jour des collisions avec les murs de la boîte
+        for i in range(Natoms):
+            loc = apos[i]
+            if abs(loc.x) > L / 2:
+                if loc.x < 0:
+                    p[i].x = abs(p[i].x)
+                else:
+                    p[i].x = -abs(p[i].x)
+            if abs(loc.y) > L / 2:
+                if loc.y < 0:
+                    p[i].y = abs(p[i].y)
+                else:
+                    p[i].y = -abs(p[i].y)
+        print(4)
+        # Mise à jour des collisions entre les sphères
+        for ij in hitlist:
+            i, j = ij
+            ptot = p[i] + p[j]
+            mtot = 2 * mass
+            Vcom = ptot / mtot
+            posi = apos[i]
+            posj = apos[j]
+            vi = p[i] / mass
+            vj = p[j] / mass
+            rrel = posi - posj
+            vrel = vj - vi
+            print(5)
+
+            if vrel.mag2 == 0 or rrel.mag > Ratom:
+                continue
+
+            dx = dot(rrel, vrel.hat)
+            dy = cross(rrel, vrel.hat).mag
+            alpha = asin(dy / (2 * Ratom))
+            d = (2 * Ratom) * cos(alpha) - dx
+            deltat = d / vrel.mag
+
+            posi = posi - vi * deltat
+            posj = posj - vj * deltat
+            pcomi = p[i] - mass * Vcom
+            pcomj = p[j] - mass * Vcom
+            rrel = hat(rrel)
+            pcomi = pcomi - 2 * dot(pcomi, rrel) * rrel
+            pcomj = pcomj - 2 * dot(pcomj, rrel) * rrel
+            p[i] = pcomi + mass * Vcom
+            p[j] = pcomj + mass * Vcom
+            apos[i] = posi + (p[i] / mass) * deltat
+            apos[j] = posj + (p[j] / mass) * deltat
+            print(6)
+        simulation_time += dt
+
+    # Convertir les listes en tableaux NumPy
+    collision_times_array = np.array(collision_times)
+    collision_distances_array = np.array(collision_distances)
+
+    return collision_times_array, collision_distances_array
+
+# Définir la variable running avant d'appeler la fonction
+running = True
+
+# Appel de la fonction et impression des données
+collision_times_array, collision_distances_array = follow_the_bouncing_ball()
+print("Collision Times:", collision_times_array)
+print("Collision Distances:", collision_distances_array)
 
 #### BOUCLE PRINCIPALE POUR L'ÉVOLUTION TEMPORELLE DE PAS dt ####
 ## ATTENTION : la boucle laisse aller l'animation aussi longtemps que souhaité, assurez-vous de savoir comment interrompre vous-même correctement (souvent `ctrl+c`, mais peut varier)
@@ -138,22 +241,30 @@ def stop_simulation(evt):
 
 
 # Désactive la saisie de texte dans la fenêtre d'animation
-def disable_default_text_input(evt):
-    pass  # Ne fait rien, empêche l'entrée de texte par défaut
+#def disable_default_text_input(evt):
+#    pass  # Ne fait rien, empêche l'entrée de texte par défaut
 
 
-# Liaison des touches pour empêcher les inputsS
-animation.bind(
-    "keydown", disable_default_text_input
-)  # Empêche l'affichage de caractères
-animation.bind("keydown", stop_simulation)  # Détecte `Esc`
+# Liaison des touches pour empêcher les inputs
+#animation.bind(
+#    "keydown", disable_default_text_input
+#)  # Empêche l'affichage de caractères
+#animation.bind("keydown", stop_simulation)  # Détecte `Esc`
 
 running = True
-
+print("Collision Times 2:")
+print("Collision Distances 2:")
 while running:
-    rate(
-        300
-    )  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
+    rate(300)  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
+
+    frame_counter = 0
+
+    if frame_counter % 1000 == 0:  # Enregistre toutes les 1000 itérations
+        save_quantite_mouvement()
+
+    frame_counter += 1
+
+
 
     #### DÉPLACE TOUTES LES SPHÈRES D'UN PAS SPATIAL deltax
     vitesse = []  # vitesse instantanée de chaque sphère
