@@ -16,8 +16,8 @@ T = 300  # Température ambiante
 r2 = (Ratom + Rion) ** 2  # Distance critique pour collision
 
 # Déclaration des variables du champ électrique
-E_intensity = 1E-28  # Intensité du champ électrique (modifiable dynamiquement)
-E_direction = 'horizontal'  # 'horizontal' ou 'vertical'
+E_intensity = -1E-29  # Intensité du champ électrique (modifiable dynamiquement)
+E_direction = 'vertical'  # 'horizontal' ou 'vertical'
 charge_electron = -1.6E-19  # Charge d'un électron (Coulombs)
 
 #### CANEVAS DE FOND ####
