@@ -16,8 +16,8 @@ T = 300  # Température ambiante
 r2 = (Ratom + Rion) ** 2  # Distance critique pour collision
 
 # Déclaration des variables du champ électrique
-E_intensity = -1E-28  # Intensité du champ électrique (modifiable dynamiquement)
-E_direction = 'vertical'  # 'horizontal' ou 'vertical'
+E_intensity = 1E-28  # Intensité du champ électrique (modifiable dynamiquement)
+E_direction = 'horizontal'  # 'horizontal' ou 'vertical'
 charge_electron = -1.6E-19  # Charge d'un électron (Coulombs)
 
 #### CANEVAS DE FOND ####
@@ -33,21 +33,21 @@ cadre = curve(color=gray, radius=r)
 cadre.append([vector(-d, -d, 0), vector(d, -d, 0), vector(d, d, 0), vector(-d, d, 0), vector(-d, -d, 0)])
 
 #### POSITION ET QUANTITÉ DE MOUVEMENT INITIALE DES SPHÈRES ####
-Atoms = []  # Objet qui contiendra les sphères pour l'animation
-p = []  # Quantité de mouvement des sphères
-apos = []  # Position des sphères
-pavg = sqrt(2 * mass * (DIM / 2) * k * T)  # Énergie cinétique moyenne en 3D
+Atoms = []
+p = []
+apos = []
+pavg = sqrt(2 * mass * (DIM / 2) * k * T)
 
 for i in range(Natoms):
-    x = L * random() - L / 2  # Position aléatoire
+    x = L * random() - L / 2
     y = L * random() - L / 2
     z = 0
-    Atoms.append(sphere(pos=vector(x, y, z), radius=Ratom, color=gray))  # Création des atomes
-    apos.append(vec(x, y, z))  # Liste de la position initiale
-    phi = 2 * pi * random()  # Direction aléatoire pour la quantité de mouvement
-    px = pavg * cos(phi)  # Quantité de mouvement initiale
+    Atoms.append(sphere(pos=vector(x, y, z), radius=Ratom, color=gray)) 
+    apos.append(vec(x, y, z)) 
+    phi = 2 * pi * random()  
+    px = pavg * cos(phi)  
     py = pavg * sin(phi)
-    p.append(vector(px, py, 0))  # Liste de la quantité de mouvement initiale
+    p.append(vector(px, py, 0)) 
 
 # Initialisation des cœurs ioniques
 Ions = []
