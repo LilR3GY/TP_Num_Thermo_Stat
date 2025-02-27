@@ -1,52 +1,72 @@
 [
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0.0
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.008948004009638523,
-        "distance_y": 0.006777405421213409,
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.011460694213660975,
+        "distance_y": -0.0036700222566733065,
         "temps": 1e-05
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_x": -0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.0023993409949076457,
-        "distance_y": -0.0005462555870851146,
+        "distance_x": -0.02292138842732195,
+        "distance_y": -0.007340044513346613,
         "temps": 2e-05
     },
     {
-        "distance_x": -0.004798681989815291,
-        "distance_y": -0.0010925111741702292,
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.03438208264098293,
+        "distance_y": -0.01101006677001992,
+        "temps": 3.0000000000000004e-05
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0458427768546439,
+        "distance_y": -0.014680089026693226,
         "temps": 4e-05
     },
     {
@@ -55,8 +75,13 @@
         "temps": 0
     },
     {
-        "distance_x": -0.007233186053831414,
-        "distance_y": 0.006612217635823337,
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.04912480664452193,
+        "distance_y": 0.021930172463553062,
         "temps": 5e-05
     },
     {
@@ -65,8 +90,8 @@
         "temps": 0
     },
     {
-        "distance_x": -0.008679823264597698,
-        "distance_y": 0.007934661162988004,
+        "distance_x": -0.05894976797342632,
+        "distance_y": 0.026316206956263674,
         "temps": 6.000000000000001e-05
     },
     {
@@ -75,313 +100,1203 @@
         "temps": 0
     },
     {
-        "distance_x": -0.06270783963639623,
-        "distance_y": -0.09279331798376654,
+        "distance_x": -0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0455790909265619,
+        "distance_y": 0.012209375754728637,
         "temps": 7.000000000000001e-05
     },
     {
         "distance_x": -0.0,
-        "distance_y": -0.0,
+        "distance_y": 0.0,
         "temps": 0
     },
     {
         "distance_x": -0.0,
-        "distance_y": -0.0,
+        "distance_y": 0.0,
         "temps": 0
     },
     {
-        "distance_x": -0.0,
-        "distance_y": -0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.10417984832688121,
-        "distance_y": 0.02635997189866693,
+        "distance_x": -0.052090389630356455,
+        "distance_y": 0.013953572291118443,
         "temps": 8e-05
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.11720232936774136,
-        "distance_y": 0.029654968386000295,
+        "distance_x": -0.05860168833415101,
+        "distance_y": 0.015697768827508247,
         "temps": 9e-05
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.1302248104086015,
-        "distance_y": 0.03294996487333366,
+        "distance_x": -0.06511298703794556,
+        "distance_y": 0.017441965363898054,
         "temps": 0.0001
     },
     {
-        "distance_x": 0.0,
+        "distance_x": -0.0,
         "distance_y": 0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
+        "distance_x": -0.0,
         "distance_y": 0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.14324729144946163,
-        "distance_y": 0.03624496136066702,
+        "distance_x": -0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.17015830054160336,
+        "distance_y": 0.0886150267964395,
         "temps": 0.00011
     },
     {
-        "distance_x": 0.0,
+        "distance_x": -0.0,
         "distance_y": 0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.15626977249032184,
-        "distance_y": 0.03953995784800039,
+        "distance_x": -0.18998286910532716,
+        "distance_y": -0.02666035521115915,
         "temps": 0.00012000000000000002
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_x": -0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_x": -0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_x": -0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_x": -0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.169292253531182,
-        "distance_y": 0.04283495433533376,
+        "distance_x": 0.05369832200026571,
+        "distance_y": -0.15777660900805546,
         "temps": 0.00013000000000000002
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.18231473457204214,
-        "distance_y": 0.04612995082266713,
+        "distance_x": 0.057828962154132295,
+        "distance_y": -0.16991327123944433,
         "temps": 0.00014000000000000001
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.20110168972168482,
-        "distance_y": 0.16711259722935304,
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.06195960230799889,
+        "distance_y": -0.1820499334708332,
         "temps": 0.00015000000000000001
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.046254366939327565,
-        "distance_y": 0.04001009919220562,
-        "temps": 0.00016
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.049145264873035534,
-        "distance_y": 0.04251073039171847,
-        "temps": 0.00017
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.05203616280674351,
-        "distance_y": 0.04501136159123132,
-        "temps": 0.00018
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.054927060740451485,
-        "distance_y": 0.047511992790744174,
-        "temps": 0.00019
-    },
-    {
-        "distance_x": -0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": -0.21687788089270518,
-        "distance_y": -0.14495756104535878,
-        "temps": 0.0002
-    },
-    {
-        "distance_x": -0.0,
         "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": -0.18024011915680682,
-        "distance_y": -0.05281048360051122,
+        "distance_x": 0.01956994608630502,
+        "distance_y": 0.2761829716731081,
+        "temps": 0.00016
+    },
+    {
+        "distance_x": 0.020793067716699084,
+        "distance_y": 0.2934444074026774,
+        "temps": 0.00017
+    },
+    {
+        "distance_x": 0.022016189347093144,
+        "distance_y": 0.3107058431322466,
+        "temps": 0.00018
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.02323931097748721,
+        "distance_y": 0.32796727886181587,
+        "temps": 0.00019
+    },
+    {
+        "distance_x": 0.024462432607881276,
+        "distance_y": 0.34522871459138516,
+        "temps": 0.0002
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.025685554238275336,
+        "distance_y": 0.3624901503209544,
         "temps": 0.00021
     },
     {
-        "distance_x": -0.18882298197379765,
-        "distance_y": -0.055325268533868904,
+        "distance_x": 0.0269086758686694,
+        "distance_y": 0.37975158605052367,
         "temps": 0.00022
     },
     {
-        "distance_x": -0.19740584479078843,
-        "distance_y": -0.05784005346722658,
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.15273753213908572,
+        "distance_y": 0.4078125860189675,
         "temps": 0.00023
     },
     {
         "distance_x": -0.0,
-        "distance_y": -0.0,
+        "distance_y": 0.0,
         "temps": 0
     },
     {
         "distance_x": -0.0,
-        "distance_y": -0.0,
+        "distance_y": 0.0,
         "temps": 0
     },
     {
         "distance_x": -0.0,
-        "distance_y": -0.0,
+        "distance_y": 0.0,
         "temps": 0
     },
     {
-        "distance_x": -0.0,
-        "distance_y": -0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.15427589605567574,
-        "distance_y": 0.27098481978519195,
+        "distance_x": 0.11300940943761587,
+        "distance_y": -0.09933710478477097,
         "temps": 0.00024000000000000003
     },
     {
         "distance_x": 0.0,
-        "distance_y": 0.0,
+        "distance_y": -0.0,
         "temps": 0
     },
     {
-        "distance_x": 0.0,
-        "distance_y": 0.0,
-        "temps": 0
-    },
-    {
-        "distance_x": 0.1607040583913289,
-        "distance_y": 0.2822758539429083,
+        "distance_x": 0.11771813483084985,
+        "distance_y": -0.10347615081746975,
         "temps": 0.00025
     },
     {
         "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.3312125924068208,
+        "distance_y": 0.0027976490856165487,
+        "temps": 0.00026000000000000003
+    },
+    {
+        "distance_x": 0.0,
         "distance_y": 0.0,
         "temps": 0
     },
     {
-        "distance_x": -0.10136861677179303,
-        "distance_y": -0.13956561457476924,
-        "temps": 0.00026000000000000003
+        "distance_x": 0.2619691161393157,
+        "distance_y": -0.043468631975055655,
+        "temps": 0.00027
     },
     {
-        "distance_x": -0.0581300703130672,
-        "distance_y": -0.1140761972680472,
+        "distance_x": 0.27167167599632747,
+        "distance_y": -0.04507858130746513,
+        "temps": 0.00028000000000000003
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.44805302282116327,
+        "distance_y": -0.11176149454717156,
+        "temps": 0.00029
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.4635031270563758,
+        "distance_y": -0.11561533918672921,
+        "temps": 0.00030000000000000003
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.3540053827245066,
+        "distance_y": -0.20800831827465685,
+        "temps": 0.00031
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.39725259611831826,
+        "distance_y": -0.17387716495929298,
         "temps": 0.00032
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.03869500014111423,
+        "distance_y": 0.008925732001663654,
+        "temps": 0.00033000000000000005
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.03986757590296617,
+        "distance_y": 0.009196208728986794,
+        "temps": 0.00034
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.04104015166481812,
+        "distance_y": 0.009466685456309937,
+        "temps": 0.00035000000000000005
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.044557878950373955,
+        "distance_y": 0.010278115638279359,
+        "temps": 0.00038
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.1883692878315038,
+        "distance_y": 0.006791904634979759,
+        "temps": 0.00039000000000000005
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.19319926957077313,
+        "distance_y": 0.006966056035876676,
+        "temps": 0.0004
+    },
+    {
+        "distance_x": 0.20676118530259688,
+        "distance_y": -0.003572382014481154,
+        "temps": 0.00041000000000000005
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.21684709678077232,
+        "distance_y": -0.0037466445517729177,
+        "temps": 0.00043000000000000004
+    },
+    {
+        "distance_x": 0.22189005251986008,
+        "distance_y": -0.0038337758204187995,
+        "temps": 0.00044
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.678171062611774,
+        "distance_y": 0.08429263624300844,
+        "temps": 0.00045000000000000004
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6932415306698133,
+        "distance_y": 0.0861658059372975,
+        "temps": 0.00046
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.645715247586154,
+        "distance_y": 0.11536716334495767,
+        "temps": 0.00047000000000000004
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6594538698752211,
+        "distance_y": 0.11782178384165891,
+        "temps": 0.00048000000000000007
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6731924921642883,
+        "distance_y": 0.12027640433836014,
+        "temps": 0.0004900000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6869311144533552,
+        "distance_y": 0.12273102483506133,
+        "temps": 0.0005
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.7006697367424224,
+        "distance_y": 0.12518564533176257,
+        "temps": 0.00051
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.7144083590314896,
+        "distance_y": 0.1276402658284638,
+        "temps": 0.0005200000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.7963441254540382,
+        "distance_y": -0.5838143992162245,
+        "temps": 0.0005300000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6156266078931196,
+        "distance_y": -0.11798094595199314,
+        "temps": 0.00054
+    },
+    {
+        "distance_x": 0.6270271006318812,
+        "distance_y": -0.12016577828443746,
+        "temps": 0.00055
+    },
+    {
+        "distance_x": 0.6384275933706427,
+        "distance_y": -0.12235061061688181,
+        "temps": 0.0005600000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.6498280861094042,
+        "distance_y": -0.12453544294932613,
+        "temps": 0.0005700000000000001
     },
     {
         "distance_x": -0.0,
         "distance_y": -0.0,
         "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.7104484694152885,
+        "distance_y": 0.309862476757755,
+        "temps": 0.00058
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6026369747207792,
+        "distance_y": 0.23821453006685098,
+        "temps": 0.00059
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.6434937187696456,
+        "distance_y": 0.2543646676985019,
+        "temps": 0.00063
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.07584721818160911,
+        "distance_y": -0.7218794123012112,
+        "temps": 0.00064
+    },
+    {
+        "distance_x": -0.0782174437497844,
+        "distance_y": -0.7444381439356241,
+        "temps": 0.0006600000000000001
+    },
+    {
+        "distance_x": 0.020878243274421858,
+        "distance_y": -0.7743364570249585,
+        "temps": 0.00067
+    },
+    {
+        "distance_x": 0.021189858845681888,
+        "distance_y": -0.7858937175775699,
+        "temps": 0.00068
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.4344218729450526,
+        "distance_y": -0.34508664041117243,
+        "temps": 0.0006900000000000001
+    },
+    {
+        "distance_x": -0.39101919365495647,
+        "distance_y": -0.9268781826766576,
+        "temps": 0.0007000000000000001
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.554465055150152,
+        "distance_y": -0.8143790029876996,
+        "temps": 0.00071
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.5622744221240978,
+        "distance_y": -0.8258491297903433,
+        "temps": 0.00072
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.7005687649391611,
+        "distance_y": -0.4053012640684284,
+        "temps": 0.0007300000000000001
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.663514710444349,
+        "distance_y": -1.1487800081361725,
+        "temps": 0.0007400000000000001
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.7830642840138821,
+        "distance_y": -1.0390905615191282,
+        "temps": 0.00075
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.7935051411340671,
+        "distance_y": -1.052945102339383,
+        "temps": 0.00076
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.2875752689069936,
+        "distance_y": 1.3077338053428735,
+        "temps": 0.0007700000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.29131001265903245,
+        "distance_y": 1.3247173612564174,
+        "temps": 0.0007800000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.2950447564110713,
+        "distance_y": 1.341700917169961,
+        "temps": 0.00079
+    },
+    {
+        "distance_x": 0.29877950016311017,
+        "distance_y": 1.3586844730835048,
+        "temps": 0.0008
+    },
+    {
+        "distance_x": 0.051474757712219946,
+        "distance_y": 0.11157742207783355,
+        "temps": 0.0008100000000000001
+    },
+    {
+        "distance_x": 0.052110248548173276,
+        "distance_y": 0.1129549211158315,
+        "temps": 0.0008200000000000001
+    },
+    {
+        "distance_x": 0.05274573938412661,
+        "distance_y": 0.11433242015382945,
+        "temps": 0.0008300000000000001
+    },
+    {
+        "distance_x": 0.053381230220079935,
+        "distance_y": 0.11570991919182738,
+        "temps": 0.00084
+    },
+    {
+        "distance_x": 0.05401672105603327,
+        "distance_y": 0.11708741822982534,
+        "temps": 0.0008500000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.056558684399846605,
+        "distance_y": 0.12259741438181712,
+        "temps": 0.0008900000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6615405371479365,
+        "distance_y": 0.5038417002639283,
+        "temps": 0.0009000000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6530890218837289,
+        "distance_y": 0.5491457221671262,
+        "temps": 0.0009100000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6602658243220116,
+        "distance_y": 0.5551802905425891,
+        "temps": 0.00092
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6674426267602944,
+        "distance_y": 0.5612148589180521,
+        "temps": 0.00093
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.6746194291985771,
+        "distance_y": 0.567249427293515,
+        "temps": 0.0009400000000000001
+    },
+    {
+        "distance_x": 0.6899550247573879,
+        "distance_y": 0.5391917415859634,
+        "temps": 0.0009500000000000001
+    },
+    {
+        "distance_x": 0.6972177092285183,
+        "distance_y": 0.5448674441289736,
+        "temps": 0.0009600000000000001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.7044803936996487,
+        "distance_y": 0.5505431466719837,
+        "temps": 0.00097
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.7117430781707792,
+        "distance_y": 0.5562188492149939,
+        "temps": 0.0009800000000000002
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.19948524424909547,
+        "distance_y": 0.03281657931819648,
+        "temps": 0.00099
+    },
+    {
+        "distance_x": 0.20150024671625807,
+        "distance_y": 0.03314805991737019,
+        "temps": 0.001
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.20351524918342065,
+        "distance_y": 0.033479540516543886,
+        "temps": 0.00101
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.11732155420831239,
+        "distance_y": -0.2113852726674999,
+        "temps": 0.00102
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.38771966526272517,
+        "distance_y": -0.09543593801855069,
+        "temps": 0.00103
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.13459272173145984,
+        "distance_y": -0.7383950487472761,
+        "temps": 0.0010400000000000001
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": 0.18941708477493632,
+        "distance_y": 0.8285991407788347,
+        "temps": 0.0010500000000000002
+    },
+    {
+        "distance_x": 0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -1.614790582283144,
+        "distance_y": 0.9131851989480677,
+        "temps": 0.00107
+    },
+    {
+        "distance_x": -1.6298820830521454,
+        "distance_y": 0.921719640059732,
+        "temps": 0.00108
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -2.0801393294207933,
+        "distance_y": -0.08017638153122818,
+        "temps": 0.00109
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -2.0992231764796996,
+        "distance_y": -0.0809119446645422,
+        "temps": 0.0011
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -2.1183070235386063,
+        "distance_y": -0.08164750779785623,
+        "temps": 0.00111
+    },
+    {
+        "distance_x": -2.156474717656419,
+        "distance_y": -0.08311863406448426,
+        "temps": 0.0011300000000000001
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -2.1755585647153253,
+        "distance_y": -0.08385419719779828,
+        "temps": 0.0011400000000000002
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -1.9588835537824647,
+        "distance_y": -1.0301808422547412,
+        "temps": 0.0011500000000000002
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": -0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -0.9575479749831942,
+        "distance_y": 0.5204450175186912,
+        "temps": 0.00116
+    },
+    {
+        "distance_x": -0.0,
+        "distance_y": 0.0,
+        "temps": 0
+    },
+    {
+        "distance_x": -1.2125122688056722,
+        "distance_y": 0.03407708062825399,
+        "temps": 0.00117
     }
 ]
