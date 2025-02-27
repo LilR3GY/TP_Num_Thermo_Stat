@@ -169,7 +169,7 @@ def checkCollisions():
 #-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
 # Régit le nombre de steps. Init les liste de distance et de temps de collision pour la particule suivit.
 
-nombre_steps = 5000
+nombre_steps = 2000
 frame_counter = 0
 
 distance_collision = []
@@ -184,27 +184,31 @@ temps_collision_x_y = []
 # Fonction permettant de suivre une particule. Determiner la distance et le temps entre chaque collision.
 
 def suivre_particule(id, hitlist, vitesse, step, dt):
-
     # Initialisation
-    position_particule = []
-    distance_collision_particule = []
-    temps_collision_particule = []
-    current_time = step * dt  # Calcule le temps accumulé jusqu'à l'étape
+    distance_collision_particule = []  # Pour stocker les distances entre chaque collision
+    temps_collision_particule = []  # Pour stocker les temps écoulés entre chaque collision
+    dernier_temps_collision = 0  # Temps de la dernière collision
 
-    # Ajoute la position actuelle de la particule suivie
-    position_particule.append(apos[id])  # Enregistre la position actuelle de la particule suivie
+    # Temps accumulé dans une simulation (et réinitialisé à chaque collision)
+    temps_simulation = 0
 
     # Vérifie si la particule suivie est impliquée dans une collision
-    if hitlist:  # S'il y a des collisions détectées
-        for paire in hitlist:  # Parcourt les collisions
+    if hitlist:  # Si des collisions sont détectées
+        for paire in hitlist:  # Parcourt chaque collision dans `hitlist`
             i, j = paire  # Indices des particules en collision
 
-            if i == id or j == id:  # Si la particule suivie est impliquée dans une collision
-                distance_parcourue = vitesse[id].mag * current_time  # Calcule la distance parcourue
-                distance_collision_particule.append(distance_parcourue)  # Stocke la distance parcourue
-                temps_collision_particule.append(current_time)  # Stocke le temps écoulé
+            if i == id or j == id:  # Si la particule suivie est impliquée
+                # Temps écoulé depuis la dernière collision
+                temps_ecoule = temps_simulation - dernier_temps_collision
+                dernier_temps_collision = temps_simulation  # Met à jour la dernière collision
 
-                current_time = 0  # Réinitialise le temps pour cet intervalle
+                # Distance parcourue depuis la dernière collision
+                distance_parcourue = vitesse[id].mag * temps_ecoule  # Distance = vitesse * temps
+                distance_collision_particule.append(distance_parcourue)  # Stocke la distance
+                temps_collision_particule.append(temps_ecoule)  # Stocke le temps entre collisions
+
+            # Incrément du temps simulation par pas de temps (dt)
+            temps_simulation += dt
 
     return distance_collision_particule, temps_collision_particule
 
@@ -216,34 +220,39 @@ def suivre_particule(id, hitlist, vitesse, step, dt):
 
 def suivre_particule_x_y(id, hitlist, vitesse, step, dt):
     # Initialisation
-    position_particule = []
-    distance_collision_particule_x = []
-    distance_collision_particule_y = []
-    temps_collision_particule = []
-    current_time = step * dt  # Calcule le temps accumulé jusqu'à l'étape
+    distance_collision_particule_x = []  # Distances en x entre chaque collision
+    distance_collision_particule_y = []  # Distances en y entre chaque collision
+    temps_collision_particule = []  # Temps écoulé entre chaque collision
+    dernier_temps_collision = 0  # Temps de la dernière collision
 
-    # Ajoute la position actuelle de la particule suivie
-    position_particule.append(apos[id])  # Enregistre la position actuelle de la particule suivie
+    # Temps simulé pour incrémentation étape par étape, réinitialisé chaque collision
+    temps_simulation = 0
 
     # Vérifie si la particule suivie est impliquée dans une collision
-    if hitlist:  # S'il y a des collisions détectées
-        for paire in hitlist:  # Parcourt les collisions
+    if hitlist:  # Si des collisions sont détectées
+        for paire in hitlist:  # Parcourt chaque collision dans `hitlist`
             i, j = paire  # Indices des particules en collision
 
-            if i == id or j == id:  # Si la particule suivie est impliquée dans une collision
-                distance_parcourue = vitesse[id].mag * current_time  # Calcule la distance parcourue totale
+            if i == id or j == id:  # Si la particule suivie est impliquée
+                # Calcule le temps écoulé depuis la dernière collision
+                temps_ecoule = temps_simulation - dernier_temps_collision
+                dernier_temps_collision = temps_simulation  # Met à jour le temps de cette collision
 
-                # Décompose en distance x et distance y
-                distance_x = distance_parcourue * (vitesse[id].x / vitesse[id].mag)
-                distance_y = distance_parcourue * (vitesse[id].y / vitesse[id].mag)
+                # Distance parcourue en x et en y depuis la dernière collision
+                distance_x = vitesse[id].x * temps_ecoule
+                distance_y = vitesse[id].y * temps_ecoule
 
-                distance_collision_particule_x.append(distance_x)  # Stocke la distance x
-                distance_collision_particule_y.append(distance_y)  # Stocke la distance y
-                temps_collision_particule.append(current_time)  # Stocke le temps écoulé
+                # Stocke les distances en x et y et le temps écoulé
+                distance_collision_particule_x.append(distance_x)
+                distance_collision_particule_y.append(distance_y)
+                temps_collision_particule.append(temps_ecoule)
 
-                current_time = 0  # Réinitialise le temps pour cet intervalle
+            # Incrément du temps simulé par étape (dt)
+            temps_simulation += dt
 
     return distance_collision_particule_x, distance_collision_particule_y, temps_collision_particule
+
+
 
 #---------------------------------------------------FIN_FONCTION_AJOUTER------------------------------------------------
 
