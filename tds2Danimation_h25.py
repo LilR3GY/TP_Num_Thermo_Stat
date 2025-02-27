@@ -11,18 +11,17 @@
 
 from vpython import *
 import os
+import time
 import json
 import numpy as np
 import math
 import matplotlib.pyplot as plt
 
 
+#------------------------------------------------------------------FONCTION_AJOUTER-------------------------------------
+# Fonction permettant enregistrer les qdm.
 
 def save_quantite_mouvement():
-    """
-    Sauvegarde la quantité de mouvement actuelle (liste `p`) dans un fichier JSON
-    dans le même répertoire que ce fichier script.
-    """
     # Obtenir le répertoire du script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     filepath = os.path.join(script_dir, "p_data.json")  # Chemin complet du fichier
@@ -37,6 +36,55 @@ def save_quantite_mouvement():
         print(f"Données sauvegardées dans le fichier {filepath}")
     except Exception as e:
         print(f"Erreur lors de la sauvegarde : {e}")
+
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER---------------------------------
+
+#------------------------------------------------------------------FONCTION_AJOUTER-------------------------------------
+# Fonction permettant enregistrer les distance et le temps entre chaque collision.
+
+def save_distance_temps_collision():
+    # Obtenir le répertoire du script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(script_dir, "distance_temps_collision_data.json")  # Chemin complet du fichier
+
+    distance_temps_dict = [{"distance": d, "temps": t} for d, t in zip(distance_collision, temps_collision)]
+
+    # Sauvegarder au format JSON
+    try:
+        with open(filepath, 'w') as f:
+            json.dump(distance_temps_dict, f, indent=4)  # Sauvegarde
+        print(f"Données sauvegardées dans le fichier {filepath}")
+    except Exception as e:
+        print(f"Erreur lors de la sauvegarde : {e}")
+
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER---------------------------------
+
+#------------------------------------------------------------------FONCTION_AJOUTER-------------------------------------
+# Fonction permettant enregistrer les distance (x et y) et le temps entre chaque collision.
+
+def save_distance_x_y_temps_collision():
+    # Obtenir le répertoire du script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(script_dir, "distance_x_y_temps_collision_data.json")  # Chemin complet du fichier
+
+    distance_x_y_temps_dict = [{"distance_x": d_x, "distance_y": d_y, "temps": t} for d_x, d_y, t in zip(distance_collision_x, distance_collision_y, temps_collision)]
+
+    # Sauvegarder au format JSON
+    try:
+        with open(filepath, 'w') as f:
+            json.dump(distance_x_y_temps_dict, f, indent=4)  # Sauvegarde
+        print(f"Données sauvegardées dans le fichier {filepath}")
+    except Exception as e:
+        print(f"Erreur lors de la sauvegarde : {e}")
+
+#------------------------------------------------------------------FIN_FONCTION_AJOUTER---------------------------------
+
+#-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
+# Choix de la particule suivit entre chaque collision.
+
+id_particule = 1
+
+#-----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
 
 
 # win = 500 # peut aider à définir la taille d'un autre objet visuel comme un histogramme proportionnellement à la taille du canevas.
@@ -80,7 +128,16 @@ for i in range(Natoms):
     y = L*random()-L/2
     z = 0
     if i == 0:  # garde une sphère plus grosse et colorée parmis toutes les grises
-        Atoms.append(simple_sphere(pos=vector(x,y,z), radius=0.03, color=color.magenta)) #, make_trail=True, retain=100, trail_radius=0.3*Ratom))
+        Atoms.append(simple_sphere(pos=vector(x,y,z), radius=0.03, color=color.magenta)) #, make_trail=True, retain=100, trail_radius=0.3*Ratom))\
+
+# -------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
+# Met en rouge la particule suivit.
+
+    if i == id_particule:
+        Atoms.append(simple_sphere(pos=vector(x,y,z), radius=Ratom, color=color.red))
+
+# -----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
+
     else: Atoms.append(simple_sphere(pos=vector(x,y,z), radius=Ratom, color=gray))
     apos.append(vec(x,y,z)) # liste de la position initiale de toutes les sphères
 #    theta = pi*random() # direction de coordonnées sphériques, superflue en 2D
@@ -104,34 +161,117 @@ def checkCollisions():
                 hitlist.append([i,j]) # liste numérotant toutes les paires de sphères en collision
     return hitlist
 
+
 #### BOUCLE PRINCIPALE POUR L'ÉVOLUTION TEMPORELLE DE PAS dt ####
 ## ATTENTION : la boucle laisse aller l'animation aussi longtemps que souhaité, assurez-vous de savoir comment interrompre vous-même correctement (souvent `ctrl+c`, mais peut varier)
 ## ALTERNATIVE : vous pouvez bien sûr remplacer la boucle "while" par une boucle "for" avec un nombre d'itérations suffisant pour obtenir une bonne distribution statistique à l'équilibre
 
-def stop_simulation(evt):
-    global running
-    if evt.key == 'esc':  # Vérifie si la touche est 'Esc'
-        running = False  # Arrête la simulation
+#-------------------------------------------------FONCTION_AJOUTER------------------------------------------------------
+# Régit le nombre de steps. Init les liste de distance et de temps de collision pour la particule suivit.
 
-# Désactive la saisie de texte dans la fenêtre d'animation
-def disable_default_text_input(evt):
-    pass  # Ne fait rien, empêche l'entrée de texte par défaut
+nombre_steps = 2000
+frame_counter = 0
 
-# Liaison des touches pour empêcher les inputs
-animation.bind('keydown', disable_default_text_input)  # Empêche l'affichage de caractères
-animation.bind('keydown', stop_simulation)  # Détecte `Esc`
+distance_collision = []
+distance_collision_x = []
+distance_collision_y = []
+temps_collision = []
+temps_collision_x_y = []
 
-running = True
+#-----------------------------------------------FIN_FONCTION_AJOUTER----------------------------------------------------
 
-while running:
-    rate(300)  # limite la vitesse de calcul de la simulation pour que l'animation soit visible à l'oeil humain!
+# -------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
+# Fonction permettant de suivre une particule. Determiner la distance et le temps entre chaque collision.
 
-    frame_counter = 0
+def suivre_particule(id, hitlist, vitesse, step, dt):
+    # Initialisation
+    distance_collision_particule = []  # Pour stocker les distances entre chaque collision
+    temps_collision_particule = []  # Pour stocker les temps écoulés entre chaque collision
+    dernier_temps_collision = 0  # Temps de la dernière collision
 
-    if frame_counter % 1000 == 0:  # Enregistre toutes les 1000 itérations
+    # Temps accumulé dans une simulation (et réinitialisé à chaque collision)
+    temps_simulation = 0
+
+    # Vérifie si la particule suivie est impliquée dans une collision
+    if hitlist:  # Si des collisions sont détectées
+        for paire in hitlist:  # Parcourt chaque collision dans `hitlist`
+            i, j = paire  # Indices des particules en collision
+
+            if i == id or j == id:  # Si la particule suivie est impliquée
+                # Temps écoulé depuis la dernière collision
+                temps_ecoule = temps_simulation - dernier_temps_collision
+                dernier_temps_collision = temps_simulation  # Met à jour la dernière collision
+
+                # Distance parcourue depuis la dernière collision
+                distance_parcourue = vitesse[id].mag * temps_ecoule  # Distance = vitesse * temps
+                distance_collision_particule.append(distance_parcourue)  # Stocke la distance
+                temps_collision_particule.append(temps_ecoule)  # Stocke le temps entre collisions
+
+            # Incrément du temps simulation par pas de temps (dt)
+            temps_simulation += dt
+
+    return distance_collision_particule, temps_collision_particule
+
+
+# -----------------------------------------------FIN_FONCTION_AJOUTER---------------------------------------------------
+
+#-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
+# Permet de donner les deplacements x et y. Utile a la question 6 de la partie 1.
+
+def suivre_particule_x_y(id, hitlist, vitesse, step, dt):
+    # Initialisation
+    distance_collision_particule_x = []  # Distances en x entre chaque collision
+    distance_collision_particule_y = []  # Distances en y entre chaque collision
+    temps_collision_particule = []  # Temps écoulé entre chaque collision
+    dernier_temps_collision = 0  # Temps de la dernière collision
+
+    # Temps simulé pour incrémentation étape par étape, réinitialisé chaque collision
+    temps_simulation = 0
+
+    # Vérifie si la particule suivie est impliquée dans une collision
+    if hitlist:  # Si des collisions sont détectées
+        for paire in hitlist:  # Parcourt chaque collision dans `hitlist`
+            i, j = paire  # Indices des particules en collision
+
+            if i == id or j == id:  # Si la particule suivie est impliquée
+                # Calcule le temps écoulé depuis la dernière collision
+                temps_ecoule = temps_simulation - dernier_temps_collision
+                dernier_temps_collision = temps_simulation  # Met à jour le temps de cette collision
+
+                # Distance parcourue en x et en y depuis la dernière collision
+                distance_x = vitesse[id].x * temps_ecoule
+                distance_y = vitesse[id].y * temps_ecoule
+
+                # Stocke les distances en x et y et le temps écoulé
+                distance_collision_particule_x.append(distance_x)
+                distance_collision_particule_y.append(distance_y)
+                temps_collision_particule.append(temps_ecoule)
+
+            # Incrément du temps simulé par étape (dt)
+            temps_simulation += dt
+
+    return distance_collision_particule_x, distance_collision_particule_y, temps_collision_particule
+
+
+
+#---------------------------------------------------FIN_FONCTION_AJOUTER------------------------------------------------
+
+
+#-------------------------------------------------------FONCTION_AJOUTER------------------------------------------------
+# Remplacement de la While par une boucle for qui prend en compte un nombre de Steps.
+
+for step in range(nombre_steps):
+    current_time = step * dt  # Update current time based on the step
+
+    rate(300)  # Control the simulation speed
+
+        # Save quantities every 1000 iterations
+    if frame_counter % 1000 == 0:
         save_quantite_mouvement()
 
     frame_counter += 1
+
+#---------------------------------------------------FIN_FONCTION_AJOUTER------------------------------------------------
 
     #### DÉPLACE TOUTES LES SPHÈRES D'UN PAS SPATIAL deltax
     vitesse = []   # vitesse instantanée de chaque sphère
@@ -151,8 +291,34 @@ while running:
             if loc.y < 0: p[i].y = abs(p[i].y)  # renverse composante y au mur du bas
             else: p[i].y =  -abs(p[i].y)  # renverse composante y au mur du haut
 
+
     #### LET'S FIND THESE COLLISIONS!!! ####
     hitlist = checkCollisions()
+
+# -------------------------------------------------FONCTION_AJOUTER-----------------------------------------------------
+    # Permet de détecter les collisions et de créer des listes avec la distance parcourue et le temps entre les collision.
+
+    distance_collision_particule, temps_collision_particule = suivre_particule(id_particule, hitlist, vitesse, step, dt)
+
+    # Ajouter les données collectées
+    distance_collision.extend(distance_collision_particule)
+    temps_collision.extend(temps_collision_particule)
+
+    # Enregistre les donnees de distance.
+    save_distance_temps_collision()
+
+    # Permet de détecter les collisions et de créer des listes avec la distance (x et y) parcourue et le temps entre les collision.
+    distance_x, distance_y, temps_collision_x_y= suivre_particule_x_y(id_particule, hitlist, vitesse, step, dt)
+
+    # Ajouter les donnees collectees
+    distance_collision_x.extend(distance_x)
+    distance_collision_y.extend(distance_y)
+    temps_collision_x_y.extend(temps_collision_x_y)
+
+    save_distance_x_y_temps_collision()
+
+
+# -----------------------------------------------FIN_FONCTION_AJOUTER---------------------------------------------------
 
     #### CONSERVE LA QUANTITÉ DE MOUVEMENT AUX COLLISIONS ENTRE SPHÈRES ####
     for ij in hitlist:
@@ -193,4 +359,5 @@ while running:
         p[j] = pcomj+mass*Vcom
         apos[i] = posi+(p[i]/mass)*deltat # move forward deltat in time, ramenant au même temps où sont rendues les autres sphères dans l'itération
         apos[j] = posj+(p[j]/mass)*deltat
-        
+
+
